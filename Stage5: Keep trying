@@ -1,0 +1,29 @@
+const input = require('sync-input')
+
+let words = ['python', 'java', 'swift', 'javascript'];
+let computer = words[Math.floor(Math.random() * 4)];
+let hiddenWord = "";
+
+for (let j = 0; j < computer.length; j++){
+  hiddenWord += "-";
+}
+
+console.log("H A N G M A N");
+for (let i = 8; i > 0; i--){
+  console.log("//" + i + " attempts");
+  console.log(hiddenWord);
+  let answer = input("Input a letter: ");
+  let foundLetter = false;
+  
+  for (let k = 0; k < computer.length; k++){
+    if (answer === computer[k]){
+      hiddenWord = hiddenWord.substr(0, k) + answer + hiddenWord.substr(k + 1);
+      foundLetter = true;
+    }
+  }
+  if (!foundLetter) {
+  console.log("That letter doesn't appear in the word");
+  }
+}
+
+console.log("Thanks for playing!");
