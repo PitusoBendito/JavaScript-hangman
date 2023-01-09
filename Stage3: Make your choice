@@ -1,0 +1,13 @@
+const input = require('sync-input')
+
+console.log("H A N G M A N");
+let words = ['python', 'java', 'swift', 'javascript'];
+
+let word = input("Guess the word: ");
+let computer = words[Math.floor(Math.random() * 4)];
+
+if (word == computer){
+  console.log("You survived!");
+} else {
+  console.log("You lost!");
+}
