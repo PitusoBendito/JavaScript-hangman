@@ -3,7 +3,6 @@ const input = require('sync-input')
 let words = ['python', 'java', 'swift', 'javascript'];
 console.log("H A N G M A N");
 let computer = words[Math.floor(Math.random() * 4)];
-console.log(computer)
 
 let hiddenWord = computer.slice(0, 3);
 for (let i = 3; i < computer.length; i++){
