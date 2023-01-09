@@ -1,0 +1,9 @@
+const input = require('sync-input')
+
+console.log("H A N G M A N");
+let answer = input("Guess the word: ");
+if (answer === "python"){
+  console.log("You survived!");
+} else {
+  console.log("You lost!");
+}
