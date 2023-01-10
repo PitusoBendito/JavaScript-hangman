@@ -1,0 +1,48 @@
+const input = require('sync-input')
+
+let words = ['python', 'java', 'swift', 'javascript'];
+let computer = words[Math.floor(Math.random() * 4)];
+let hiddenWord = "";
+let attempts = 8;
+let usedLetters = [];
+
+for (let j = 0; j < computer.length; j++){
+  hiddenWord += "-";
+}
+
+console.log("H A N G M A N ");
+
+while (attempts > 0){
+  console.log("#" + attempts + " attempts");
+  console.log(hiddenWord);
+  let answer = input("Input a letter: ");
+  
+  if (usedLetters.includes(answer)) {
+    console.log("No improvements");
+    attempts--;
+  } else {
+    usedLetters.push(answer);
+    let found = false;
+    for (let k = 0; k < computer.length; k++){
+      if (answer === computer[k]){
+        hiddenWord = hiddenWord.substr(0, k) + answer + hiddenWord.substr(k + 1);
+        found = true;
+      }
+    } 
+    if (!found) {
+      attempts--;
+      console.log("That letter doesn't appear in the word.");
+    } else {
+      if (hiddenWord === computer) {
+        console.log(hiddenWord);
+        console.log("You guessed the word!");
+        console.log("You survived!");
+        break;
+      }
+    }
+  }
+}
+
+if (attempts === 0) {
+  console.log("You lost!");
+}
